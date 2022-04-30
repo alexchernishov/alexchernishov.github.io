@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Board from "./board";
+import {Grid, CssBaseline} from "@mui/material";
+import {ThemeProvider} from "@mui/styles";
+import {lightTheme} from "./styles";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return (<>
+          <CssBaseline />
+            <ThemeProvider theme={lightTheme}>
+                <Grid container
+                      spacing={2}
+                      direction="row"
+                      justifyContent="center"
+                      alignItems="center">
+                    <Board/>
+                </Grid>
+            </ThemeProvider>
+      </>
   );
 }
 

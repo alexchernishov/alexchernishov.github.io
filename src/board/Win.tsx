@@ -1,7 +1,7 @@
 import useStyles from "./styles";
 import {Alert} from "@mui/material";
 
-const Lose=()=>{
+const Win=()=>{
 
 
 
@@ -11,7 +11,7 @@ const Lose=()=>{
 
 
     return <div className={classes.lose}>
-        <Alert severity="error">You lost</Alert>
+        <Alert severity="success">You win</Alert>
     </div>
 }
-export default Lose;
+export default Win;

@@ -1,15 +1,25 @@
+import Cells from "../cells";
+import {Grid} from "@mui/material";
 
 
-type Rows= {
-    rows: Array<any>
+type RowType= {
+    row: [string|number],
+    index: number,
 }
 
-const Rows=(props:Rows)=>{
+const Row=(props:RowType)=>{
     const {
-        rows
+        row,
+        index,
     }=props;
 
 
-    return <div>{rows.map((row,key)=><Row key={key} row={row}/>)}</div>
+    return <Grid
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        container>
+        <Cells row={row} rowIndex={index}/>
+    </Grid>
 }
-export default Rows;
+export default Row;
