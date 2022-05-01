@@ -2,12 +2,14 @@ import { takeEvery } from 'redux-saga/effects'
 import {Action} from "../store";
 
 type Params = {
-    socket: WebSocket
+    socket: WebSocket|boolean,
 }
 
 const handleNewMessage = function* handleNewMessage(params:Params) {
     yield takeEvery("SEND_MESSAGE", (action:Action) => {
-        params.socket.send(action.payload.message)
+        if (typeof params.socket !== "boolean") {
+            params.socket.send(action.payload.message);
+        }
     })
 }
 

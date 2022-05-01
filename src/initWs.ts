@@ -1,15 +1,18 @@
 import {Dispatch} from "@reduxjs/toolkit";
 import {getMap, setConnected, setLoading, setLose, setMap, setWin} from "./board/actions";
 
+
 const initWs = (dispatch:Dispatch) => {
     const url = process.env.REACT_APP_WEBSOCKET_URL==='string' ? process.env.REACT_APP_WEBSOCKET_URL :   'wss://hometask.eg1236.com/game1/';
 
-    const socket = new WebSocket(url)
-
+    if(typeof WebSocket === 'undefined') {
+        return false;
+    }
+    const socket =new WebSocket(url);
     socket.onopen = () => {
         dispatch(setConnected(true))
     }
-    socket.onmessage = (event) => {
+    socket.onmessage = (event:any) => {
         const data = event.data.split(':');
         switch (true) {
             case event.data==='new: OK':
